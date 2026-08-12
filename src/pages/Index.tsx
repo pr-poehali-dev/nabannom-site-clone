@@ -14,12 +14,6 @@ const rooms = [
   { title: "Баня 3", desc: "Баня-люкс с купелью и бассейном, беседка с мангалом, отдельный вход, идеально для компании", cap: "до 10 чел.", image: ROOM_IMAGE },
 ];
 
-const offers = [
-  { title: "Пакет выходного дня", sub: "ПТ–ВС", items: ["2 ночи в номере", "Баня 3 часа", "Завтраки", "Прокат лодки"] },
-  { title: "Романтический уикенд", sub: "для двоих", items: ["2 ночи в люксе", "Баня с вениками", "Ужин при свечах", "Шампанское"], accent: true },
-  { title: "Групповой отдых", sub: "от 6 человек", items: ["Коттедж целиком", "Баня на всю группу", "Мангал и беседка"] },
-];
-
 const services = [
   { icon: "Flame", title: "Русская баня", desc: "Топим по-чёрному и по-белому. Дровяная печь, берёзовые веники, купель с ледяной водой" },
   { icon: "Fish", title: "Рыбалка", desc: "Снасти напрокат, лодка, опытный гид. Щука, окунь, карп — всё своё" },
@@ -322,57 +316,6 @@ export default function Index() {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* OFFERS */}
-      <section className="py-24" style={{ backgroundColor: "hsl(40,45%,95%)" }}>
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-4">
-            <h2 className="font-display text-4xl md:text-5xl font-light" style={{ color: "hsl(25,45%,13%)" }}>Специальные предложения</h2>
-            <div className="flex items-center justify-center gap-2 mt-4 mb-4">
-              <span style={{ color: "hsl(32,68%,52%)" }}>✦</span>
-              <div style={{ width: 40, height: 1, background: "hsl(32,68%,52%)" }} />
-              <span style={{ color: "hsl(32,68%,52%)" }}>✦</span>
-            </div>
-            <p className="font-body text-sm mb-14" style={{ color: "rgba(35,25,15,0.6)" }}>Сезонные скидки и готовые пакеты для отдыха мечты</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {offers.map((o) => (
-              <div
-                key={o.title}
-                className="relative p-7 flex flex-col"
-                style={{
-                  background: o.accent ? "hsl(25,45%,13%)" : "#fff",
-                  border: o.accent ? "1px solid hsl(32,68%,52%)" : "1px solid hsl(38,35%,85%)",
-                  transform: o.accent ? "scale(1.04)" : "none",
-                }}
-              >
-                <h3 className="font-display text-2xl mb-1" style={{ color: o.accent ? "hsl(38,78%,62%)" : "hsl(25,45%,13%)" }}>{o.title}</h3>
-                <p className="text-xs uppercase tracking-widest font-body mb-5" style={{ color: o.accent ? "rgba(240,230,210,0.5)" : "rgba(35,25,15,0.5)" }}>{o.sub}</p>
-                <ul className="flex-1 mb-6 space-y-2.5">
-                  {o.items.map((it) => (
-                    <li key={it} className="flex items-center gap-2 text-sm font-body" style={{ color: o.accent ? "rgba(240,230,210,0.8)" : "rgba(35,25,15,0.7)" }}>
-                      <Icon name="Sparkle" size={13} style={{ color: "hsl(32,68%,52%)" }} />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={() => setPhoneOpen(true)}
-                  className="w-full py-3 text-xs tracking-widest uppercase font-body font-semibold transition-all duration-300"
-                  style={{
-                    background: o.accent ? "hsl(32,68%,52%)" : "transparent",
-                    color: o.accent ? "hsl(25,45%,13%)" : "hsl(25,45%,13%)",
-                    border: o.accent ? "none" : "1px solid hsl(25,45%,13%)",
-                  }}
-                >
-                  Выбрать пакет
-                </button>
-              </div>
-            ))}
           </div>
         </div>
       </section>
