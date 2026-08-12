@@ -323,11 +323,10 @@ export default function Index() {
       {/* CONTACTS */}
       <section id="contacts" className="py-16" style={{ background: "hsl(152,28%,16%)" }}>
         <div className="max-w-5xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid md:grid-cols-2 gap-8 text-center max-w-xl mx-auto">
             {[
-              { icon: "Phone", label: "Телефон", value: "+7 (347) 200-00-00", href: "tel:+73472000000" },
-              { icon: "MapPin", label: "Адрес", value: "Башкортостан, озеро Банное", href: null },
-              { icon: "Mail", label: "Email", value: "info@nabannom.ru", href: "mailto:info@nabannom.ru" },
+              { icon: "Phone", label: "Телефон", value: "+7 (904) 808-25-12", href: "tel:+79048082512" },
+              { icon: "MapPin", label: "Адрес", value: "Башкортостан, озеро Банное (Якты-Куль)", href: null },
             ].map((c) => (
               <div key={c.label} className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 flex items-center justify-center" style={{ border: "1px solid hsla(38,58%,48%,0.3)" }}>
