@@ -35,12 +35,12 @@
     --radius: 0.25rem;
 
     /* Custom brand colors */
-    --forest: 152 28% 16%;
-    --forest-mid: 150 20% 24%;
-    --gold: 38 58% 48%;
-    --gold-light: 42 70% 62%;
-    --cream: 42 30% 94%;
-    --bark: 25 30% 22%;
+    --forest: 25 45% 13%;
+    --forest-mid: 25 40% 18%;
+    --gold: 32 68% 52%;
+    --gold-light: 38 78% 62%;
+    --cream: 40 45% 95%;
+    --bark: 25 40% 10%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
