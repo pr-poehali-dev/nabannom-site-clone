@@ -9,15 +9,15 @@ const CABIN_IMAGE = "https://cdn.poehali.dev/projects/10f9a3c2-afd3-46e0-bc04-eb
 const TUB_IMAGE = "https://cdn.poehali.dev/projects/10f9a3c2-afd3-46e0-bc04-eb527887e7d6/files/560d389a-8b1b-4711-992a-c48cadf08083.jpg";
 
 const rooms = [
-  { title: "Баня 1", desc: "Классическая русская баня на дровах, отдельный сруб, купель с холодной водой, терраса с видом на лес", price: "от 2 500 ₽/2 ч.", cap: "до 4 чел.", image: BANYA_IMAGE },
-  { title: "Баня 2", desc: "Просторная баня с панорамным окном на озеро, финская сауна + русский пар, зона отдыха с диванами", price: "от 3 500 ₽/2 ч.", cap: "до 6 чел.", image: CABIN_IMAGE, badge: "Хит" },
-  { title: "Баня 3", desc: "Баня-люкс с купелью и бассейном, беседка с мангалом, отдельный вход, идеально для компании", price: "от 5 000 ₽/2 ч.", cap: "до 10 чел.", image: ROOM_IMAGE },
+  { title: "Баня 1", desc: "Классическая русская баня на дровах, отдельный сруб, купель с холодной водой, терраса с видом на лес", cap: "до 4 чел.", image: BANYA_IMAGE },
+  { title: "Баня 2", desc: "Просторная баня с панорамным окном на озеро, финская сауна + русский пар, зона отдыха с диванами", cap: "до 6 чел.", image: CABIN_IMAGE, badge: "Хит" },
+  { title: "Баня 3", desc: "Баня-люкс с купелью и бассейном, беседка с мангалом, отдельный вход, идеально для компании", cap: "до 10 чел.", image: ROOM_IMAGE },
 ];
 
 const offers = [
-  { title: "Пакет выходного дня", sub: "ПТ–ВС", items: ["2 ночи в номере", "Баня 3 часа", "Завтраки", "Прокат лодки"], price: "от 9 900 ₽", badge: "-15%" },
-  { title: "Романтический уикенд", sub: "для двоих", items: ["2 ночи в люксе", "Баня с вениками", "Ужин при свечах", "Шампанское"], price: "от 14 500 ₽", badge: "-20%", accent: true },
-  { title: "Групповой отдых", sub: "от 6 человек", items: ["Коттедж целиком", "Баня на всю группу", "Мангал и беседка", "Скидка 25%"], price: "от 6 000 ₽/чел.", badge: "-25%" },
+  { title: "Пакет выходного дня", sub: "ПТ–ВС", items: ["2 ночи в номере", "Баня 3 часа", "Завтраки", "Прокат лодки"] },
+  { title: "Романтический уикенд", sub: "для двоих", items: ["2 ночи в люксе", "Баня с вениками", "Ужин при свечах", "Шампанское"], accent: true },
+  { title: "Групповой отдых", sub: "от 6 человек", items: ["Коттедж целиком", "Баня на всю группу", "Мангал и беседка"] },
 ];
 
 const services = [
@@ -261,11 +261,9 @@ export default function Index() {
                   <h3 className="font-display text-2xl mb-2" style={{ color: "hsl(25,45%,13%)" }}>{r.title}</h3>
                   <p className="text-sm leading-relaxed font-body mb-4" style={{ color: "rgba(35,25,15,0.6)", minHeight: "72px" }}>{r.desc}</p>
                   <div className="flex items-center justify-between">
-                    <div>
-                      <div className="font-display text-lg" style={{ color: "hsl(32,68%,52%)" }}>{r.price}</div>
-                      <div className="text-xs font-body" style={{ color: "rgba(35,25,15,0.5)" }}>{r.cap}</div>
-                    </div>
+                    <div className="text-xs font-body" style={{ color: "rgba(35,25,15,0.5)" }}>{r.cap}</div>
                     <button
+                      onClick={() => setPhoneOpen(true)}
                       className="px-4 py-2 text-xs tracking-widest uppercase font-body font-semibold transition-all duration-300"
                       style={{ background: "hsl(32,68%,52%)", color: "hsl(25,45%,13%)" }}
                       onMouseEnter={e => (e.currentTarget.style.background = "hsl(38,78%,62%)")}
@@ -312,13 +310,9 @@ export default function Index() {
                   </div>
                 ))}
               </div>
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <div>
-                  <div className="font-display text-2xl" style={{ color: "hsl(38,78%,62%)" }}>от 2 500 ₽</div>
-                  <div className="text-xs font-body" style={{ color: "rgba(240,230,210,0.5)" }}>за 2 часа (до 4 чел.)</div>
-                </div>
+              <div className="flex items-center justify-end flex-wrap gap-4">
                 <button
-                  onClick={() => scrollTo("booking")}
+                  onClick={() => setPhoneOpen(true)}
                   className="px-7 py-3.5 font-body font-semibold text-sm tracking-widest uppercase transition-all duration-300"
                   style={{ background: "hsl(32,68%,52%)", color: "hsl(25,45%,13%)" }}
                   onMouseEnter={e => (e.currentTarget.style.background = "hsl(38,78%,62%)")}
@@ -356,9 +350,6 @@ export default function Index() {
                   transform: o.accent ? "scale(1.04)" : "none",
                 }}
               >
-                <div className="absolute top-4 right-4 px-2.5 py-1 text-[10px] font-semibold" style={{ background: "hsl(0,65%,45%)", color: "#fff" }}>
-                  {o.badge}
-                </div>
                 <h3 className="font-display text-2xl mb-1" style={{ color: o.accent ? "hsl(38,78%,62%)" : "hsl(25,45%,13%)" }}>{o.title}</h3>
                 <p className="text-xs uppercase tracking-widest font-body mb-5" style={{ color: o.accent ? "rgba(240,230,210,0.5)" : "rgba(35,25,15,0.5)" }}>{o.sub}</p>
                 <ul className="flex-1 mb-6 space-y-2.5">
@@ -369,9 +360,8 @@ export default function Index() {
                     </li>
                   ))}
                 </ul>
-                <div className="font-display text-xl mb-4" style={{ color: o.accent ? "hsl(38,78%,62%)" : "hsl(25,45%,13%)" }}>{o.price}</div>
                 <button
-                  onClick={() => scrollTo("booking")}
+                  onClick={() => setPhoneOpen(true)}
                   className="w-full py-3 text-xs tracking-widest uppercase font-body font-semibold transition-all duration-300"
                   style={{
                     background: o.accent ? "hsl(32,68%,52%)" : "transparent",
