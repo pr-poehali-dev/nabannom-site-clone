@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Icon from "@/components/ui/icon";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const HERO_IMAGE = "https://cdn.poehali.dev/projects/10f9a3c2-afd3-46e0-bc04-eb527887e7d6/files/c3fa9b79-df75-4ce3-b700-fef18f91f7fa.jpg";
 const BANYA_IMAGE = "https://cdn.poehali.dev/projects/10f9a3c2-afd3-46e0-bc04-eb527887e7d6/files/b7e34dc9-4919-41ef-9681-7f643c02cb9c.jpg";
@@ -33,6 +34,7 @@ const gallery = [CABIN_IMAGE, BANYA_IMAGE, ROOM_IMAGE, TUB_IMAGE, HERO_IMAGE, BA
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [phoneOpen, setPhoneOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -152,7 +154,7 @@ export default function Index() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-14 animate-fade-in" style={{ animationDelay: "1.1s", opacity: 0 }}>
             <button
-              onClick={() => scrollTo("booking")}
+              onClick={() => setPhoneOpen(true)}
               className="px-9 py-4 font-body font-semibold text-sm tracking-widest uppercase transition-all duration-300"
               style={{ background: "hsl(32,68%,52%)", color: "hsl(25,45%,13%)" }}
               onMouseEnter={e => (e.currentTarget.style.background = "hsl(38,78%,62%)")}
@@ -576,6 +578,31 @@ export default function Index() {
           </p>
         </div>
       </footer>
+
+      <Dialog open={phoneOpen} onOpenChange={setPhoneOpen}>
+        <DialogContent style={{ background: "hsl(25,45%,13%)", border: "1px solid hsla(32,68%,52%,0.3)" }}>
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl text-center" style={{ color: "hsl(40,45%,95%)" }}>
+              Позвоните для бронирования
+            </DialogTitle>
+            <DialogDescription className="text-center font-body" style={{ color: "rgba(240,230,210,0.6)" }}>
+              Наш менеджер поможет подобрать номер и баню под ваши даты
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center gap-4 py-4">
+            <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "hsla(32,68%,52%,0.15)" }}>
+              <Icon name="Phone" size={26} style={{ color: "hsl(32,68%,52%)" }} />
+            </div>
+            <a
+              href="tel:+79048082512"
+              className="font-display text-3xl tracking-wide"
+              style={{ color: "hsl(38,78%,62%)" }}
+            >
+              +7 904 808-25-12
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
